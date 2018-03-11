@@ -5,7 +5,7 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  DirectionsRenderer, } from 'react-google-maps';
+  DirectionsRenderer, Polyline } from 'react-google-maps';
 const { compose, withProps, lifecycle } = require("recompose");
 const request = require('request');
 // const data = require('./demo2.json');
@@ -80,6 +80,22 @@ const visits = {
   }
 };
 
+const combined = {
+  ...visits,
+  ubc: {
+    location: {
+      lat: 49.2613153,
+      lng: -123.2559719
+    }
+  },
+  home: {
+    location: {
+      lat: 49.2318372,
+      lng: -123.0107467
+    }
+  }
+};
+
 class RouteMap extends Component {
 
   constructor(props) {
@@ -107,8 +123,9 @@ class RouteMap extends Component {
 
     request.post(options, (err, res, body) => {
       if (!err && res.statusCode == 200) {
-        console.log(body.solution.vehicle_1);
-        this.setState({ routes: body.solution.vehicle_1 });
+        console.log("tree", body.solution.vehicle_1);
+        const tree = getLatLon(body.solution.vehicle_1);
+        this.setState({ routes: tree });
       } else {
         console.log(err);
       }
@@ -123,26 +140,36 @@ class RouteMap extends Component {
           {/*<p key={stop.location_id}>{stop.location_name} time: {stop.arrival_time}</p>*/}
         {/*))}*/}
         {/*{this.state.routes.length > 0 && <DirectionsRenderer directions={this.state.routes} />}*/}
-        <GoogleMapExample />
+        <GoogleMapExample pathCoordinates={this.state.routes}/>
       </div>
     );
   }
 }
 
-// const GoogleMapExample = withGoogleMap(props => (
-//   <GoogleMap
-//     defaultCenter = { { lat: 49.2318372, lng: -123.0107467 } }
-//     defaultZoom = { 13 }
-//   >
-//   </GoogleMap>
-// ));
+function getLatLon(arr) {
+  const res2 = [];
+
+  const res = arr.map(item => {
+    return {
+      lat: combined[item.location_id].location.lat,
+      lng: combined[item.location_id].location.lng
+    }
+  });
+
+  for (let i = 1; i<res.length; i++) {
+    res2.push([res[i-1], res[i]]);
+  }
+
+  return res2;
+}
+
 
 const GoogleMapExample = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBfzfG_CDAaVM2mYzqBRhQAe70ZX_epyHA&v=3.exp&libraries=geometry,drawing,places",
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
-    mapElement: <div style={{ height: `100%` }} />,
+    loadingElement: <div style={{ height: `100%`, width: '400px' }} />,
+    containerElement: <div style={{ height: `400px`, width: '400px' }} />,
+    mapElement: <div style={{ height: `100%`, width: '400px' }} />,
   }),
   withScriptjs,
   withGoogleMap,
@@ -151,8 +178,8 @@ const GoogleMapExample = compose(
       const DirectionsService = new google.maps.DirectionsService();
 
       DirectionsService.route({
-        origin: new google.maps.LatLng(41.8507300, -87.6512600),
-        destination: new google.maps.LatLng(41.8525800, -87.6514100),
+        origin: new google.maps.LatLng(49.2485585, -123.0579327),
+        destination: new google.maps.LatLng(49.2679807, -123.1886416),
         travelMode: google.maps.TravelMode.DRIVING,
       }, (result, status) => {
         if (status === google.maps.DirectionsStatus.OK) {
@@ -165,24 +192,34 @@ const GoogleMapExample = compose(
       });
     }
   })
-)(props =>
-
-  //*<GoogleMap*/
-    // defaultCenter = { { lat: 49.2318372, lng: -123.0107467 } }
-    // defaultZoom = { 13 }
-  // >
-  // </GoogleMap>
-
-  props => <GoogleMap
-    // containerElement={ <div style={{ height: `400px`, width: '540px' }} /> }
-    // mapElement={ <div style={{ height: `100%`, width: '100%' }} /> }
-    // containerElement={props.containerElement}
-    // mapElement={props.mapElement}
+)(props => {
+  console.log(props.pathCoordinates);
+  return (
+  <GoogleMap
     defaultZoom={13}
     defaultCenter = { { lat: 49.2318372, lng: -123.0107467 } }
   >
-    {props.directions && <DirectionsRenderer directions={props.directions} />}
-  </GoogleMap>
+    {(props.pathCoordinates.map((coords, id) => <Polyline
+      key={id}
+      path={coords}
+      geodesic={true}
+      options={{
+        strokeColor: '#ff2527',
+        // strokeOpacity: 0.0,
+        strokeWeight: 4,
+        // icons: [{
+        //   icon: lineSymbol,
+        //   offset: '0',
+        //   repeat: '20px'
+        // }],
+      }}/>))}
+  </GoogleMap>)}
 );
 
+const testCoor = [
+    { lat: 49.2318372, lng: -123.0107467 },
+    { lat: 49.2613153, lng: -123.2559719 }
+  ];
+
+    // {props.directions && <DirectionsRenderer directions={props.directions} />}
 export default RouteMap;
