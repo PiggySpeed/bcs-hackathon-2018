@@ -5,12 +5,13 @@ import SelectableList from '../List/SelectableList.js';
 import Avatar from 'material-ui/Avatar';
 import Subheader from 'material-ui/Subheader';
 import SMS from 'material-ui/svg-icons/notification/sms';
+import Person from 'material-ui/svg-icons/social/person';
 
 class Passenger extends Component {
   render() {
     return (
       <div>
-        {/*<h1>Hello, Passenger!</h1>*/}
+        <h1 style={{paddingTop: "5%",textAlign: "center", color: "#57c25a", fontSize: "200%"}}>Hello, Passenger!</h1>
         <br/>
         <SearchBar
           onChange={() => console.log('onChange')}
@@ -22,12 +23,12 @@ class Passenger extends Component {
         />
         <br/>
         <SelectableList>
-          <Subheader>Drivers Near You</Subheader>
-          <div>
+          <Subheader style={{paddingLeft: "18%"}}>Drivers Near You</Subheader>
+          <div style={{paddingLeft: "18%", paddingRight: "18%"}}>
             <ListItem
               value={1}
               primaryText="Player One"
-              leftAvatar={<Avatar src="../images/passenger.svg" />}
+              leftAvatar={<Avatar icon={<Person />} />}
               initiallyOpen={true}
               rightIcon={<SMS />}
               nestedItems={[
@@ -37,11 +38,11 @@ class Passenger extends Component {
               ]}
             />
           </div>
-          <div>
+          <div style={{paddingLeft: "18%", paddingRight: "18%"}}>
             <ListItem
               value={2}
               primaryText="Player Two"
-              leftAvatar={<Avatar src="../images/passenger.svg" />}
+              leftAvatar={<Avatar icon={<Person />} />}
               initiallyOpen={true}
               rightIcon={<SMS />}
               nestedItems={[
