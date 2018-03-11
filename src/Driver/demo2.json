@@ -1,0 +1,62 @@
+{
+  "visits": {
+    "order_1": {
+      "location": {
+        "name": "2450 E 24th Ave",
+        "lat": 49.2485585,
+        "lng": -123.0579327
+      },
+      "start": "8:00",
+      "end": "9:00",
+      "duration": 5
+    },
+    "order_2": {
+      "location": {
+        "name": "1619 W Broadway",
+        "lat": 49.2639666,
+        "lng": -123.1436714
+      },
+      "start": "8:00",
+      "end": "9:00",
+      "duration": 5
+    },
+    "order_3": {
+      "location": {
+        "name": "2539 W Broadway",
+        "lat": 49.2641816,
+        "lng": -123.1654911
+      },
+      "start": "8:00",
+      "end": "9:00",
+      "duration": 10
+    },
+    "order_4": {
+      "location": {
+        "name": "2083 Alma St",
+        "lat": 49.2679807,
+        "lng": -123.1886416
+      },
+      "start": "8:00",
+      "end": "9:00",
+      "duration": 10
+    }
+  },
+  "fleet": {
+    "vehicle_1": {
+      "start_location": {
+        "id": "home",
+        "name": "1-4287 Kingsway",
+        "lat": 49.2318372,
+        "lng": -123.0107467
+      },
+      "end_location": {
+        "id": "ubc",
+        "name": "2329 West Mall",
+        "lat": 49.2613153,
+        "lng": -123.2559719
+      },
+      "shift_start": "8:00",
+      "shift_end": "12:00"
+    }
+  }
+}
