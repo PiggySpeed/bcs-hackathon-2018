@@ -34,7 +34,7 @@ class Home extends Component {
       <div className="App">
         <div style={innerContainer}>
           <img src={Car} className="icon-base" alt="driver" />
-          <h1 style={headerStyle}>Car Sharing App</h1>
+          <h1 style={headerStyle}>UBerC</h1>
           <div style={buttonContainer}>
             <IconButton
               style={iconBtnStyle}

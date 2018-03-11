@@ -12,7 +12,7 @@ const innerContainer = {
 
 class Driver extends Component {
   constructor(props){
-    super(props)
+    super(props);
     this.state = {
       numofpass: null,
       cardescription: null,
@@ -23,9 +23,9 @@ class Driver extends Component {
   }
   render() {
     return (
-      <div>
-        <h1>Driver</h1>
-        <h2>Please add your information below.</h2>
+      <div style={{display: 'flex'}}>
+       <div style={{paddingRight: 50, color: 'white'}}>
+        <h2 style={{color: 'white', fontSize: 16}}>Please add your information below.</h2>
         <br />
         <br />
         <div>
@@ -57,6 +57,7 @@ class Driver extends Component {
               style={innerContainer}/>
               <FlatButton label="OK" primary={true} />
       </div>
+       </div>
         <RouteMap />
 
       </div>

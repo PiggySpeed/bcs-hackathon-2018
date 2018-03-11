@@ -7,5 +7,5 @@ import Passenger from './Passenger/passenger';
 import registerServiceWorker from './registerServiceWorker';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-ReactDOM.render(<MuiThemeProvider> <Passenger/> </MuiThemeProvider>, document.getElementById('root'));
+ReactDOM.render(<MuiThemeProvider> <App/> </MuiThemeProvider>, document.getElementById('root'));
 registerServiceWorker();

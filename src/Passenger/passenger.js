@@ -10,7 +10,7 @@ import Person from 'material-ui/svg-icons/social/person';
 class Passenger extends Component {
   render() {
     return (
-      <div>
+      <div style={{width: 600, color: 'white'}}>
         <h1 style={{paddingTop: "5%",textAlign: "center", color: "#57c25a", fontSize: "200%"}}>Hello, Passenger!</h1>
         <br/>
         <SearchBar
@@ -27,7 +27,7 @@ class Passenger extends Component {
           <div style={{paddingLeft: "18%", paddingRight: "18%"}}>
             <ListItem
               value={1}
-              primaryText="Player One"
+              primaryText="Harry Potter"
               leftAvatar={<Avatar icon={<Person />} />}
               initiallyOpen={true}
               rightIcon={<SMS />}
@@ -41,7 +41,7 @@ class Passenger extends Component {
           <div style={{paddingLeft: "18%", paddingRight: "18%"}}>
             <ListItem
               value={2}
-              primaryText="Player Two"
+              primaryText="Hermoine Granger"
               leftAvatar={<Avatar icon={<Person />} />}
               initiallyOpen={true}
               rightIcon={<SMS />}
