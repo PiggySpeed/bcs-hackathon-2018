@@ -4,13 +4,13 @@ import {List, ListItem} from 'material-ui/List';
 import SelectableList from '../List/SelectableList.js';
 import Avatar from 'material-ui/Avatar';
 import Subheader from 'material-ui/Subheader';
-import Divider from 'material-ui/Divider';
+import SMS from 'material-ui/svg-icons/notification/sms';
 
 class Passenger extends Component {
   render() {
     return (
       <div>
-        <h1>Hello, Passenger!</h1>
+        {/*<h1>Hello, Passenger!</h1>*/}
         <br/>
         <SearchBar
           onChange={() => console.log('onChange')}
@@ -20,32 +20,37 @@ class Passenger extends Component {
             maxWidth: 800
           }}
         />
+        <br/>
         <SelectableList>
           <Subheader>Drivers Near You</Subheader>
-          <ListItem
-            value={1}
-            primaryText="Player One"
-            secondaryText="Time: 08:00"
-            leftAvatar={<Avatar src="images/ok-128.jpg" />}
-          />
-          <Divider />
-          <ListItem
-            value={3}
-            primaryText="Player Two"
-            leftAvatar={<Avatar src="images/kerem-128.jpg" />}
-          />
-          <Divider />
-          <ListItem
-            value={4}
-            primaryText="Player Three"
-            leftAvatar={<Avatar src="images/kolage-128.jpg" />}
-          />
-          <Divider />
-          <ListItem
-            value={5}
-            primaryText="Player Four"
-            leftAvatar={<Avatar src="images/raquelromanp-128.jpg" />}
-          />
+          <div>
+            <ListItem
+              value={1}
+              primaryText="Player One"
+              leftAvatar={<Avatar src="../images/passenger.svg" />}
+              initiallyOpen={true}
+              rightIcon={<SMS />}
+              nestedItems={[
+                <ListItem secondaryText="Time: 08:00" />,
+                <ListItem secondaryText="Location: Burnaby" />,
+                <ListItem secondaryText="Rating: 4.2" />
+              ]}
+            />
+          </div>
+          <div>
+            <ListItem
+              value={2}
+              primaryText="Player Two"
+              leftAvatar={<Avatar src="../images/passenger.svg" />}
+              initiallyOpen={true}
+              rightIcon={<SMS />}
+              nestedItems={[
+                <ListItem secondaryText="Time: 13:00" />,
+                <ListItem secondaryText="Location: Coquitlam" />,
+                <ListItem secondaryText="Rating: 4.8" />
+                ]}
+            />
+          </div>
         </SelectableList>
       </div>
     );
