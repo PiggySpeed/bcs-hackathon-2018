@@ -59,4 +59,3 @@ class Passenger extends Component {
 }
 
 export default Passenger;
-
