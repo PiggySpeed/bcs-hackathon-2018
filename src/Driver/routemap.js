@@ -1,11 +1,12 @@
 /* eslint-disable */
-
 import React, { Component, PureComponent } from 'react';
 // import GoogleMap from 'google-map-react';
-import {   withScriptjs,
+import {
+  withScriptjs,
   withGoogleMap,
   GoogleMap,
   DirectionsRenderer, } from 'react-google-maps';
+const { compose, withProps, lifecycle } = require("recompose");
 const request = require('request');
 // const data = require('./demo2.json');
 // var data = require('./demo.json');
@@ -122,26 +123,23 @@ class RouteMap extends Component {
           {/*<p key={stop.location_id}>{stop.location_name} time: {stop.arrival_time}</p>*/}
         {/*))}*/}
         {/*{this.state.routes.length > 0 && <DirectionsRenderer directions={this.state.routes} />}*/}
-        <GoogleMapExample
-          containerElement={ <div style={{ height: `400px`, width: '540px' }} /> }
-          mapElement={ <div style={{ height: `100%`, width: '100%' }} /> }
-        />
+        <GoogleMapExample />
       </div>
     );
   }
 }
 
-const GoogleMapExample = withGoogleMap(props => (
-  <GoogleMap
-    defaultCenter = { { lat: 49.2318372, lng: -123.0107467 } }
-    defaultZoom = { 13 }
-  >
-  </GoogleMap>
-));
+// const GoogleMapExample = withGoogleMap(props => (
+//   <GoogleMap
+//     defaultCenter = { { lat: 49.2318372, lng: -123.0107467 } }
+//     defaultZoom = { 13 }
+//   >
+//   </GoogleMap>
+// ));
 
-const MapWithADirectionsRenderer = compose(
+const GoogleMapExample = compose(
   withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBfzfG_CDAaVM2mYzqBRhQAe70ZX_epyHA&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
@@ -175,11 +173,13 @@ const MapWithADirectionsRenderer = compose(
   // >
   // </GoogleMap>
 
-  <GoogleMap
+  props => <GoogleMap
+    // containerElement={ <div style={{ height: `400px`, width: '540px' }} /> }
+    // mapElement={ <div style={{ height: `100%`, width: '100%' }} /> }
+    // containerElement={props.containerElement}
+    // mapElement={props.mapElement}
     defaultZoom={13}
-defaultCenter = { { lat: 49.2318372, lng: -123.0107467 } }
-
-// defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
+    defaultCenter = { { lat: 49.2318372, lng: -123.0107467 } }
   >
     {props.directions && <DirectionsRenderer directions={props.directions} />}
   </GoogleMap>

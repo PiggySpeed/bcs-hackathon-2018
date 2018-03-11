@@ -15,7 +15,6 @@ class Driver extends Component {
     return (
       <div>
         <h1>Driver</h1>
-        <RouteMap />
         <h2>Please add your information below.</h2>
 <br />
 <br />
