@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Angeli Corpin</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="text/javascript" src="functions.js"></script>
+</head>
+
+<body>
+
+  <!-- Menu -->
+  <section id="header">
+    <nav class="navbar">
+      <div class="dropdown">
+        <button class="dropbtn">MENU
+      <i class="fa fa-caret-down"></i>
+    </button>
+        <div class="dropdown-content">
+          <a href="#" onclick="ShowContent('home');">Home</a>
+          <a href="#" onclick="ShowContent('projects');">Projects</a>
+          <a href="#" onclick="ShowContent('resume');">Resume</a>
+          <a href="#" onclick="ShowContent('email');">Email</a>
+          <a href="#" onclick="ShowContent('linkedIn');">LinkedIn</a>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <!-- Home -->
+
+  <section id="home" style="display:block">
+    <div class="row">
+      <div class="column left">
+        <h1>ANGELI CORPIN</h>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="column right"><p>
+        <ul>
+          <li><a href="#" onclick="ShowContent('projects');">Projects</a></li>
+          <li><a href="#" onclick="ShowContent('resume');">Resume</a></li>
+          <li><a href="#" onclick="ShowContent('email');">Email</a></li>
+          <li><a href="#" onclick="ShowContent('linkedIn');">LinkedIn</a></li>
+        </ul>
+      </p></div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <div id="projects" style="display:none">
+    <p>Projects</p>
+  </div>
+
+  <!-- Resume -->
+  <section id="resume" style="display:none">
+    <p>Resume</p>
+  </section>
+
+  <!-- Email -->
+  <section id="email" style="display:none">
+    <p>Email</p>
+  </section>
+
+  <!-- LinkedIn -->
+  <section id="linkedIn" style="display:none">
+    <p>LinkedIn</p>
+  </section>
+
+</body>
+
+</html>
